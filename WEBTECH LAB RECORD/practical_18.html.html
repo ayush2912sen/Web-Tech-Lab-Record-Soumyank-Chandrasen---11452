@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Element Manipulation</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background: linear-gradient(135deg, #74ebd5, #9face6);
+        min-height: 100vh;
+    }
+
+    h2 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 20px;
+    }
+
+    button {
+        padding: 10px 18px;
+        margin: 5px;
+        border: none;
+        border-radius: 6px;
+        font-size: 15px;
+        cursor: pointer;
+        color: white;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:nth-child(1) {
+        background-color: #27ae60; /* green */
+    }
+
+    button:nth-child(2) {
+        background-color: #e74c3c; /* red */
+    }
+
+    button:nth-child(3) {
+        background-color: #2980b9; /* blue */
+    }
+
+    button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    #list {
+        margin-top: 20px;
+        padding: 0;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #list li {
+        list-style: none;
+        background: rgb(255, 255, 255);
+        padding: 10px 15px;
+        margin-bottom: 8px;
+        border-radius: 6px;
+        font-weight: bold;
+        color: #34495e;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        transition: background 0.3s;
+    }
+
+    #list li:hover {
+        background-color: #f1f1f1;
+    }
+</style>
+
+</head>
+
+<body>
+
+<h2>Element Manipulation Demo</h2>
+
+<button onclick="addItem()">Add Item</button>
+<button onclick="removeItem()">Remove Last Item</button>
+<button onclick="modifyFirst()">Modify First Item</button>
+
+<ul id="list">
+    <li>Item 1</li>
+</ul>
+
+<script>
+
+// ----- APPEND CHILD (Add new li element) -----
+function addItem() {
+    let li = document.createElement("li");   // create element
+    li.innerHTML = "New Item";               // add content
+    document.getElementById("list").appendChild(li); // append to ul
+}
+
+
+// ----- REMOVE CHILD (Remove last element) -----
+function removeItem() {
+    let list = document.getElementById("list");
+
+    if (list.lastElementChild) {             // check if exists
+        list.removeChild(list.lastElementChild);
+    } else {
+        alert("No items left to remove!");
+    }
+}
+
+
+// ----- MODIFY CHILD NODE (Change content of first item) -----
+function modifyFirst() {
+    let list = document.getElementById("list");
+
+    if (list.firstElementChild) {
+        list.firstElementChild.innerHTML = "First Item (Modified)";
+    } else {
+        alert("No items to modify!");
+    }
+}
+
+</script>
+
+</body>
+</html>
